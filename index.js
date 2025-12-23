@@ -48,6 +48,12 @@ async function postDailyPolls() {
       console.error("Channel nicht gefunden oder kein Text-Channel.");
       return;
     }
+	
+	// @everyone ping
+	await channel.send({
+		content: "@everyone",
+		allowedMentions: { parse: ["everyone"] },
+	});
 
     // Header
     await channel.send({
