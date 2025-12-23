@@ -70,7 +70,7 @@ client.once(Events.ClientReady, async () => {
   console.log(`Eingeloggt als ${client.user.tag}`);
 
   //Zum Testen einmal aktivieren:
-  await postDailyPolls();
+  //await postDailyPolls();
 
   //Jeden Tag um 08:00 Europe/Berlin
   cron.schedule(
