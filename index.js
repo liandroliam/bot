@@ -1,14 +1,26 @@
-require("dotenv").config();
+// dotenv nur lokal nutzen (Railway braucht das nicht)
+if (process.env.RAILWAY_ENVIRONMENT_NAME == null) {
+  require("dotenv").config();
+}
+
 const cron = require("node-cron");
 const { Client, GatewayIntentBits, Events } = require("discord.js");
 
 const TOKEN = process.env.DISCORD_TOKEN;
 const CHANNEL_ID = process.env.CHANNEL_ID;
 
+// Debug (zeigt nur ob gesetzt, NICHT den Token)
+console.log("ENV CHECK:", {
+  hasToken: Boolean(TOKEN),
+  hasChannelId: Boolean(CHANNEL_ID),
+  railwayEnv: process.env.RAILWAY_ENVIRONMENT_NAME || null,
+});
+
 if (!TOKEN || !CHANNEL_ID) {
-  console.error("Fehler: DISCORD_TOKEN oder CHANNEL_ID fehlt in der .env");
+  console.error("Fehler: DISCORD_TOKEN oder CHANNEL_ID fehlt (Railway Variables prüfen).");
   process.exit(1);
 }
+
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds],
