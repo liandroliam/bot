@@ -1,9 +1,8 @@
 services:
   discord-poll-bot:
-  build: .
-  container_name: discord-poll-bot
-  restart: unless-stopped
-
-  environment:
-  DISCORD_TOKEN: "${DISCORD_TOKEN}"
-  CHANNEL_ID: "${CHANNEL_ID}"
+    build: .
+    container_name: discord-poll-bot
+    restart: unless-stopped
+    environment:
+      DISCORD_TOKEN: "${DISCORD_TOKEN}"
+      CHANNEL_ID: "${CHANNEL_ID}"
